@@ -11,7 +11,7 @@ const indexGet = async (req, res, next) => {
     SELECT * 
     FROM posts
     INNER JOIN users ON posts.author_id = users.id
-    ORDER BY created_at LIMIT $1 OFFSET $2;
+    ORDER BY created_at DESC LIMIT $1 OFFSET $2;
     `,
     [5, 0]
   );
