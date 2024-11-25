@@ -10,9 +10,9 @@
         <h1>Login</h1>
     </header>
     <main>
-        <% if (locals.error) { %>
+        <% if (locals.errors) { %>
             <div class="error">
-                <h2><%= locals.error.userNotFound %></h2>
+                <h2><%= locals.errors.userNotFound %></h2>
             </div>
         <% } %>
         <form id="login-form" action="/auth/login" method="POST">

@@ -58,9 +58,8 @@ const userLoginPost = async (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      console.log("User not found");
       return res.render("login", {
-        errors: { userNotFound: "User not found" },
+        errors: { userNotFound: "Incorrect username or password" },
       });
     }
     req.logIn(user, (err) => {
