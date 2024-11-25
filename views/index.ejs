@@ -8,15 +8,14 @@
 <body>
     <% if (locals.user) {%>
         <h1>WELCOME BACK <%= locals.user.username %></h1>
-        <a href="/auth/logout">LOG OUT</a>
+        <form action="/auth/logout" method="GET">
+            <button type="submit">Logout</button>
+        </form>
       <% } else { %>
-        <h1>please log in</h1>
-        <form action="/auth/login" method="POST">
-          <label for="username">Username</label>
-          <input id="username" name="username" placeholder="username" type="text" />
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" />
-          <button>Log In</button>
+        <h2>Welcome to the Secret Forum</h2>
+        <p>This is a members-only forum where you can login and view and make anonymous posts</p>
+        <form action="/auth/login" method="GET">
+            <button type="submit">Login</button>
         </form>
       <%}%>
 </body>
