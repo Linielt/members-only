@@ -78,7 +78,6 @@ passport.deserializeUser(async (id, done) => {
 app.use("/auth", authRouter);
 app.use((req, res, next) => {
   res.locals.user = req.user;
-  console.log(req.user);
   next();
 });
 app.use("/post", postRouter);
@@ -93,10 +92,12 @@ app.use((err, req, res, next) => {
 app.use((err, req, res, next) => {
   res
     .status(401)
-    .render("error", { errorMessage: err.message || "Unauthorized access" });
+    .render("error", {
+      errorMessage: err.message || "Unauthorized Access Denied",
+    });
 });
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`My first Express app - listening on port ${PORT}!`);
+  console.log(`listening on port ${PORT}!`);
 });

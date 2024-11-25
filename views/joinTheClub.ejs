@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join The Club!</title>
+    <link href="../public/css/global.css" rel="stylesheet">
+    <link href="../public/css/content.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/join-club-form.css" type="text/css">
+    <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Join The Club!</h1>
-    <p>Enter the secret passcode to join the club!</p>
-    <p>By joining the club, you will be able to see the author and dates of posts!</p>
-    <form action="/auth/join-club" method="POST">
-        <% if (locals.errors) { %>
-            <div class="error">
-                <h2><%= locals.errors.incorrectPasscode %></h2>
-            </div>
-        <% } %>
-        <input id="passcode" name="passcode" type="text" placeholder="Passcode" />
-        <button type="submit">Submit</button>
-    </form>
+    <%- include("partials/navbar.ejs") %>
+    <main class="content">
+        <h2>Join The Club!</h2>
+        <p>Enter the secret passcode to join the club!</p>
+        <p>By joining the club, you will be able to see the author and dates of posts!</p>
+        <form class="join-club-form" action="/auth/join-club" method="POST">
+            <% if (locals.errors) { %>
+                <div class="error">
+                    <h2><%= locals.errors.incorrectPasscode %></h2>
+                </div>
+            <% } %>
+            <input class="form-input" id="passcode" name="passcode" type="text" placeholder="Passcode" />
+            <button type="submit">Submit</button>
+        </form>
+    </main>
 </body>
 </html>

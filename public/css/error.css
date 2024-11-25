@@ -5,5 +5,5 @@
     color: black;
     padding: 8px;
     font-size: 0.8rem;
-    flex-basis: 75%;
+    max-width: 70%;
 }

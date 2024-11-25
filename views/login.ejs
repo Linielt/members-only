@@ -5,35 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="../public/css/global.css" rel="stylesheet">
-    <link href="../public/css/login.css" rel="stylesheet">
+    <link href="../public/css/content.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
     <link href="../public/css/login-form.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
     <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
-    <main>
-        <h2>Log In</h2>
-        <% if (locals.errors) { %>
-            <div class="error">
-                <h2><%= locals.errors.userNotFound %></h2>
-            </div>
-        <% } %>
+    <main class="content">
+        <h2>Login</h2>
         <form class="login-form" action="/auth/login" method="POST">
+            <% if (locals.errors) { %>
+                <div class="error">
+                    <h2><%= locals.errors.userNotFound %></h2>
+                </div>
+            <% } %>
             <section>
-                <input id="username" name="username" placeholder="Username" type="text" />
+                <input class="form-input" id="username" name="username" placeholder="Username" type="text" />
             </section>
             <% if (locals.errors && locals.errors.username) { %>
                 <div class="error"><%= errors.username %></div>
             <% } %>
             <section>
-                <input id="password" name="password" type="password" placeholder="Password" />
+                <input class="form-input" id="password" name="password" type="password" placeholder="Password" />
             </section>
             <% if (locals.errors && locals.errors.password) { %>
                 <div class="error"><%= errors.password %></div>
             <% } %>
-            <button class="login">Log In</button>
+            <button class="login">Login</button>
+            <a href="/auth/signup">Don't have an account yet? Sign up</a>
         </form>
-        <a href="/auth/signup">Don't have an account yet? Sign up</a>
     </main>
 </body>
 </html>

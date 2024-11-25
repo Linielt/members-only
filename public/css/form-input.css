@@ -1,0 +1,7 @@
+.form-input {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: black;
+    font-size: 1.2rem;
+}

@@ -1,18 +1,16 @@
 <header>
-    <nav>
+    <nav class="navbar">
         <div>
-            <a href="/">Secret Forum</a>
+            <h1>Secret Forum</h1>
         </div>
         <ul>
             <li class="navbar-item"><a href="/">Home</a></li>
-            <li class="navbar-item"><a href="/post/create-post">Create Post</a></li>
-            <li class="navbar-item"><a href="/auth/join-club">Join The Club!</a></li>
             <% if (locals.user) { %>
-                <li class="navbar-item">
-                    <form action="/auth/logout" method="GET">
-                        <button class="" type="submit">Logout</button>
-                    </form>
-                </li>
+                <li class="navbar-item"><a href="/post/create-post">Create Post</a></li>
+                <% if (locals.user.membership_status !== "member") { %>
+                    <li class="navbar-item"><a href="/auth/join-club">Join The Club!</a></li>
+                <% } %>
+                <li class="navbar-item"><a href="/auth/logout">Log out</a></li>
             <% } %>
         </ul>
     </nav>

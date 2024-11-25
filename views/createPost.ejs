@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Posts</title>
+    <link rel="stylesheet" href="../public/css/global.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/content.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/create-post-form.css" type="text/css">
     <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
-    <main>
-        <form action="/post/create-post" method="POST">
-            <label for="title">Title</label>
-            <input id="title" name="title" placeholder="Title" type="text" required />
+    <main class="content">
+        <h2>Create Post</h2>
+        <form class="create-post-form" action="/post/create-post" method="POST">
+            <input class="form-input" id="title" name="title" placeholder="Title" minlength="3" maxlength="64" type="text" required />
             <% if (locals.errors && locals.errors.title) { %>
                 <div class="error">
                     <%= locals.errors.title %>
                 </div>
             <% } %>
-            <label for="body">Body</label>
-            <textarea id="body" name="body" rows="5" placeholder="Enter here" required></textarea>
+            <textarea class="form-input" id="body" name="body" rows="10" cols="50" placeholder="Enter here" minlength="3" required></textarea>
             <% if (locals.errors && locals.errors.body) { %>
                 <div class="error">
                     <%= locals.errors.body %>

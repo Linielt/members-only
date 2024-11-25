@@ -1,0 +1,15 @@
+.join-club-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    gap: 2rem;
+}
+
+.join-club-form button {
+    padding: 20px 40px;
+    border-radius: 8px;
+    min-width: 20%;
+    border: 1px solid black;
+}

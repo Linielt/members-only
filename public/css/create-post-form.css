@@ -1,0 +1,12 @@
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.create-post-form button {
+    padding: 20px 40px;
+    border-radius: 8px;
+    border: 1px solid black;
+}

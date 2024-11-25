@@ -8,7 +8,10 @@ const indexGet = async (req, res, next) => {
 
   const postList = await pgPool.query(
     `
-    SELECT * FROM posts ORDER BY created_at LIMIT $1 OFFSET $2;
+    SELECT * 
+    FROM posts
+    INNER JOIN users ON posts.author_id = users.id
+    ORDER BY created_at LIMIT $1 OFFSET $2;
     `,
     [5, 0]
   );

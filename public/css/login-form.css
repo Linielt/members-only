@@ -2,15 +2,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
+    align-items: center;
     gap: 20px;
     text-align: center;
 }
 
-.login-form section input {
+.login-form button {
+    padding: 15px;
+    border-radius: 8px;
+    width: 10%;
+    max-width: 20%;
     border: 1px solid black;
-    padding: 10px 20px;
-    color: black;
-    font-size: 1.2rem;
-    margin: 0 auto;
+}
+
+.login-form a {
+    text-decoration: none;
+    color: rgb(33, 150, 243);
 }

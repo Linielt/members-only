@@ -80,7 +80,7 @@ const userLogoutGet = async (req, res, next) => {
   });
 };
 
-const joinClubGet = (req, res) => {
+const joinClubGet = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return next(new Error("Unauthorized Access Denied"));
   }

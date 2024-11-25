@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="../public/css/global.css" type="text/css">
-    <link rel="stylesheet" href="../public/css/index.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/content.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/non-logged-in-content.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/post-container.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/post-header.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/delete-post-button.css" type="text/css">
     <link rel="stylesheet" href="../public/css/post.css" type="text/css">
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
-    <main>
+    <main class="content">
         <% if (locals.user) {%>
-        <h1>Welcome Back <%= locals.user.username %></h1>
+        <h2>Welcome Back <%= locals.user.first_name + " " + locals.user.last_name %></h2>
         <% if (locals.posts && locals.posts.length > 0) { %>
             <section class="post-container">
                 <% locals.posts.forEach(function(post) { %>
                     <div class="post">
-                        <h2><%= post.title %></h2>
+                        <div class="post-header">
+                            <h2><%= post.title %></h2>
+                            <h3>Author: <%= post.first_name + " " + post.last_name %></h3>
+                        </div>
                         <p><%= post.body %></p>
                         <% if (locals.user.membership_status === "member" || locals.user.is_admin) { %>
-                            <p>Author ID: <%= post.author_id %></p>
                             <p>Created At: <%= post.created_at.toLocaleString() %></p>
                         <% } %>
                         <% if (locals.user.is_admin) { %>
                             <form name="deletePost" action="/post/delete/<%= post.id %>" method="POST">
-                                <button type="submit">Delete</button>
+                                <button class="delete-post-button" type="submit">Delete</button>
                             </form>
                         <% } %>
                     </div>
@@ -36,11 +45,11 @@
         <% } %> 
     </main>   
       <% } else { %>
-        <main>
+        <main class="non-logged-in-content">
             <h2>Welcome to the Secret Forum</h2>
             <p>This is a members-only forum where you can login and view and make anonymous posts</p>
             <form action="/auth/login" method="GET">
-                <button type="submit">Login</button>
+                <button class="form-input" type="submit">Login</button>
             </form>
         </main>
       <%}%>
