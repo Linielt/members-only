@@ -5,8 +5,20 @@
     gap: 16px;
 }
 
-.create-post-form button {
+.create-post-form-btn {
     padding: 20px 40px;
     border-radius: 8px;
     border: 1px solid black;
+}
+
+.create-post-form-btn:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.create-post-form-input {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: black;
+    font-size: 1.2rem;
 }

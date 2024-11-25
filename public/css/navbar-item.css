@@ -2,6 +2,10 @@
     font-weight: bold;
 }
 
+.navbar-item:hover {
+    text-decoration: underline;
+}
+
 .navbar-item a {
     text-decoration: none;
 }

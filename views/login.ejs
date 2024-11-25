@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="../public/css/global.css" rel="stylesheet">
+    <link href="../public/css/x-global.css" rel="stylesheet">
     <link href="../public/css/content.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
     <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
-    <link href="../public/css/login-form.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
+    <link href="../public/css/login-form.css" rel="stylesheet">
     <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
@@ -34,8 +34,8 @@
             <% if (locals.errors && locals.errors.password) { %>
                 <div class="error"><%= errors.password %></div>
             <% } %>
-            <button class="login">Login</button>
-            <a href="/auth/signup">Don't have an account yet? Sign up</a>
+            <button class="login-form-submit-btn">Login</button>
+            <a class="login-form-hyperlink" href="/auth/signup">Don't have an account yet? Sign up</a>
         </form>
     </main>
 </body>

@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="../public/css/global.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/x-global.css" type="text/css">
     <link rel="stylesheet" href="../public/css/content.css" type="text/css">
     <link rel="stylesheet" href="../public/css/non-logged-in-content.css" type="text/css">
     <link rel="stylesheet" href="../public/css/navbar.css" type="text/css">
     <link rel="stylesheet" href="../public/css/navbar-item.css" type="text/css">
-    <link rel="stylesheet" href="../public/css/post-container.css" type="text/css">
-    <link rel="stylesheet" href="../public/css/post-header.css" type="text/css">
     <link rel="stylesheet" href="../public/css/form-input.css" type="text/css">
-    <link rel="stylesheet" href="../public/css/delete-post-button.css" type="text/css">
     <link rel="stylesheet" href="../public/css/post.css" type="text/css">
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
     <main class="content">
         <% if (locals.user) {%>
-        <h2>Welcome Back <%= locals.user.first_name + " " + locals.user.last_name %></h2>
+        <h2>Welcome back <%= locals.user.first_name + " " + locals.user.last_name %></h2>
         <% if (locals.posts && locals.posts.length > 0) { %>
             <section class="post-container">
                 <% locals.posts.forEach(function(post) { %>
@@ -34,7 +31,7 @@
                         <% } %>
                         <% if (locals.user.is_admin) { %>
                             <form name="deletePost" action="/post/delete/<%= post.id %>" method="POST">
-                                <button class="delete-post-button" type="submit">Delete</button>
+                                <button class="post-delete-btn" type="submit">Delete</button>
                             </form>
                         <% } %>
                     </div>

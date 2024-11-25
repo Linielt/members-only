@@ -7,9 +7,13 @@
     gap: 2rem;
 }
 
-.join-club-form button {
+.join-club-form-btn {
     padding: 20px 40px;
     border-radius: 8px;
     min-width: 20%;
     border: 1px solid black;
+}
+
+.join-club-form-btn:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
 }
