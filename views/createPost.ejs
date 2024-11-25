@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Posts</title>
+    <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Create a new post</h1>
-    </header>
+    <%- include("partials/navbar.ejs") %>
     <main>
         <form action="/post/create-post" method="POST">
             <label for="title">Title</label>

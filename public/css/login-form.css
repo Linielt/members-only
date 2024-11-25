@@ -1,0 +1,16 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 20px;
+    text-align: center;
+}
+
+.login-form section input {
+    border: 1px solid black;
+    padding: 10px 20px;
+    color: black;
+    font-size: 1.2rem;
+    margin: 0 auto;
+}

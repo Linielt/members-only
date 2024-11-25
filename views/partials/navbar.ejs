@@ -1,0 +1,19 @@
+<header>
+    <nav>
+        <div>
+            <a href="/">Secret Forum</a>
+        </div>
+        <ul>
+            <li class="navbar-item"><a href="/">Home</a></li>
+            <li class="navbar-item"><a href="/post/create-post">Create Post</a></li>
+            <li class="navbar-item"><a href="/auth/join-club">Join The Club!</a></li>
+            <% if (locals.user) { %>
+                <li class="navbar-item">
+                    <form action="/auth/logout" method="GET">
+                        <button class="" type="submit">Logout</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

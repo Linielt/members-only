@@ -80,10 +80,47 @@ const userLogoutGet = async (req, res, next) => {
   });
 };
 
+const joinClubGet = (req, res) => {
+  if (!req.isAuthenticated()) {
+    return next(new Error("Unauthorized Access Denied"));
+  }
+
+  res.render("joinTheClub");
+};
+
+const joinClubPost = async (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return next(new Error("Unauthorized Access Denied"));
+  }
+
+  if (req.body.passcode == process.env.PASSCODE) {
+    try {
+      await pgPool.query(
+        `
+          UPDATE users
+          SET membership_status = 'member'
+          WHERE id = $1;
+        `,
+        [req.user.id]
+      );
+    } catch (err) {
+      return next(err);
+    }
+  } else {
+    return res.render("joinTheClub", {
+      errors: { incorrectPasscode: "You entered the incorrect passcode!" },
+    });
+  }
+
+  return res.redirect("/");
+};
+
 module.exports = {
   userSignUpGet,
   userSignUpPost,
   userLoginGet,
   userLoginPost,
   userLogoutGet,
+  joinClubGet,
+  joinClubPost,
 };

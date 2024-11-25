@@ -4,39 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <link rel="stylesheet" href="../public/css/global.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/index.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/post.css" type="text/css">
 </head>
 <body>
-    <% if (locals.user) {%>
-        <h1>WELCOME BACK <%= locals.user.username %></h1>
-        <form action="/auth/logout" method="GET">
-            <button type="submit">Logout</button>
-        </form>
-        <form action="/post/create-post" method="GET">
-            <button type="submit">Create Post</button>
-        </form>
+    <%- include("partials/navbar.ejs") %>
+    <main>
+        <% if (locals.user) {%>
+        <h1>Welcome Back <%= locals.user.username %></h1>
         <% if (locals.posts && locals.posts.length > 0) { %>
-            <% locals.posts.forEach(function(post) { %>
-                <div class="post">
-                    <h2><%= post.title %></h2>
-                    <p><%= post.body %></p>
-                    <p>Author ID: <%= post.author_id %></p>
-                    <p>Created At: <%= post.created_at.toLocaleString() %></p>
-                    <% if (locals.user.is_admin) { %>
-                        <form name="deletePost" action="/post/delete/<%= post.id %>" method="POST">
-                            <button type="submit">Delete</button>
-                        </form>
-                    <% } %>
-                </div>
-            <% }) %>
+            <section class="post-container">
+                <% locals.posts.forEach(function(post) { %>
+                    <div class="post">
+                        <h2><%= post.title %></h2>
+                        <p><%= post.body %></p>
+                        <% if (locals.user.membership_status === "member" || locals.user.is_admin) { %>
+                            <p>Author ID: <%= post.author_id %></p>
+                            <p>Created At: <%= post.created_at.toLocaleString() %></p>
+                        <% } %>
+                        <% if (locals.user.is_admin) { %>
+                            <form name="deletePost" action="/post/delete/<%= post.id %>" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </section>
         <% } else { %>
             <p>Zero posts available</p>
-        <% } %>    
+        <% } %> 
+    </main>   
       <% } else { %>
-        <h2>Welcome to the Secret Forum</h2>
-        <p>This is a members-only forum where you can login and view and make anonymous posts</p>
-        <form action="/auth/login" method="GET">
-            <button type="submit">Login</button>
-        </form>
+        <main>
+            <h2>Welcome to the Secret Forum</h2>
+            <p>This is a members-only forum where you can login and view and make anonymous posts</p>
+            <form action="/auth/login" method="GET">
+                <button type="submit">Login</button>
+            </form>
+        </main>
       <%}%>
 </body>
 </html>

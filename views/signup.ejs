@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up Page</title>
+  <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
+  <%- include("partials/navbar.ejs") %>
   <h1>Sign Up</h1>
   <form action="/auth/signup" method="POST">
     <label for="firstname">First Name</label>

@@ -5,6 +5,8 @@ const {
   userLoginPost,
   userLogoutGet,
   userSignUpGet,
+  joinClubGet,
+  joinClubPost,
 } = require("../controllers/authController");
 
 const router = Router();
@@ -20,5 +22,8 @@ router.get("/login", loginValidator, userLoginGet);
 router.post("/login", userLoginPost);
 
 router.get("/logout", userLogoutGet);
+
+router.get("/join-club", joinClubGet);
+router.post("/join-club", joinClubPost);
 
 module.exports = router;

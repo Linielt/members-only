@@ -12,6 +12,7 @@ const indexRouter = require("./routes/indexRouter");
 const authRouter = require("./routes/authRouter");
 const postRouter = require("./routes/postRouter");
 
+app.use("/public", express.static("public"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -77,10 +78,23 @@ passport.deserializeUser(async (id, done) => {
 app.use("/auth", authRouter);
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  console.log(req.user);
   next();
 });
 app.use("/post", postRouter);
 app.use("/", indexRouter);
+
+app.use((err, req, res, next) => {
+  res
+    .status(500)
+    .render("error", { errorMessage: err.message || "Something went wrong " });
+});
+
+app.use((err, req, res, next) => {
+  res
+    .status(401)
+    .render("error", { errorMessage: err.message || "Unauthorized access" });
+});
 
 const PORT = 3000;
 app.listen(PORT, () => {

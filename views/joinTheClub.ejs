@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join The Club!</title>
+</head>
+<body>
+    <h1>Join The Club!</h1>
+    <p>Enter the secret passcode to join the club!</p>
+    <p>By joining the club, you will be able to see the author and dates of posts!</p>
+    <form action="/auth/join-club" method="POST">
+        <% if (locals.errors) { %>
+            <div class="error">
+                <h2><%= locals.errors.incorrectPasscode %></h2>
+            </div>
+        <% } %>
+        <input id="passcode" name="passcode" type="text" placeholder="Passcode" />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

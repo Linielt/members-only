@@ -4,30 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="../public/css/global.css" rel="stylesheet">
+    <link href="../public/css/login.css" rel="stylesheet">
+    <link href="../public/css/login-form.css" rel="stylesheet">
+    <link href="../public/css/error.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Login</h1>
-    </header>
+    <%- include("partials/navbar.ejs") %>
     <main>
+        <h2>Log In</h2>
         <% if (locals.errors) { %>
             <div class="error">
                 <h2><%= locals.errors.userNotFound %></h2>
             </div>
         <% } %>
-        <form id="login-form" action="/auth/login" method="POST">
-            <label for="username">Username</label>
-            <input id="username" name="username" placeholder="username" type="text" />
+        <form class="login-form" action="/auth/login" method="POST">
+            <section>
+                <input id="username" name="username" placeholder="Username" type="text" />
+            </section>
             <% if (locals.errors && locals.errors.username) { %>
                 <div class="error"><%= errors.username %></div>
             <% } %>
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <section>
+                <input id="password" name="password" type="password" placeholder="Password" />
+            </section>
             <% if (locals.errors && locals.errors.password) { %>
                 <div class="error"><%= errors.password %></div>
             <% } %>
             <button class="login">Log In</button>
         </form>
+        <a href="/auth/signup">Don't have an account yet? Sign up</a>
     </main>
 </body>
 </html>
