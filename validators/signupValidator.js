@@ -23,7 +23,7 @@ const validateSignUp = [
   body("password")
     .trim()
     .isLength({ min: 8, max: 24 })
-    .withMessage("Password must be at leasy 8 to 24 characters long"),
+    .withMessage("Password must be at least 8 to 24 characters long"),
 ];
 
 module.exports = validateSignUp;

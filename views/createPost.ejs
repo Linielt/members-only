@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Posts</title>
+</head>
+<body>
+    <header>
+        <h1>Create a new post</h1>
+    </header>
+    <main>
+        <form action="/post/create-post" method="POST">
+            <label for="title">Title</label>
+            <input id="title" name="title" placeholder="Title" type="text" required />
+            <% if (locals.errors && locals.errors.title) { %>
+                <div class="error">
+                    <%= locals.errors.title %>
+                </div>
+            <% } %>
+            <label for="body">Body</label>
+            <textarea id="body" name="body" rows="5" placeholder="Enter here" required></textarea>
+            <% if (locals.errors && locals.errors.body) { %>
+                <div class="error">
+                    <%= locals.errors.body %>
+                </div>
+            <% } %>
+            <button type="submit">Create Post</button>
+        </form>
+    </main>
+</body>
+</html>

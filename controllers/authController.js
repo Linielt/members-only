@@ -54,11 +54,7 @@ const userLoginPost = async (req, res, next) => {
   }
 
   passport.authenticate("local", (err, user, info) => {
-    console.log("auth callback");
-    console.log(user);
-
     if (err) {
-      console.log("Some error");
       return next(err);
     }
     if (!user) {

@@ -10,6 +10,7 @@ const pgPool = require("./db/pool");
 
 const indexRouter = require("./routes/indexRouter");
 const authRouter = require("./routes/authRouter");
+const postRouter = require("./routes/postRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -78,6 +79,7 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
+app.use("/post", postRouter);
 app.use("/", indexRouter);
 
 const PORT = 3000;
