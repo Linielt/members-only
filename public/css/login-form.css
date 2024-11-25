@@ -12,6 +12,7 @@
     border-radius: 8px;
     min-width: 10%;
     border: 1px solid black;
+    font-size: 1.5rem;
 }
 
 .login-form-submit-btn:hover {
